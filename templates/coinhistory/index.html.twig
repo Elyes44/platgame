@@ -1,0 +1,43 @@
+{% extends 'baseadmin.html.twig'  %}
+{% block body %}
+    <div class="row" style="display:flex;align-items:center;justify-content:center;margin-top:150px">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <a href="{{ path ('addcoinhistory') }}"><i class="ri-arrow-left-circle-fill" style="font-size:30px"></i></a>
+                    <h5 class="card-title">Wallet History</h5>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>montant Achat</th>
+                            <th>transaction</th>
+                            <th>Money recieved</th>
+                            <th>Date</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for icon in b %}
+                            <tr>
+                                <td>{{icon.idH}}</td>
+                                <td>{{icon.montantAchat}}</td>
+                                <td>{{icon.transaction}}</td>
+                                <td>{{icon.moneyrecived}}</td>
+                                <td>{{icon.dateHystory|date("d/m/y")}}</td>
+                                <td><a class="btn btn-outline-dark" href="{{ path('updatehistoriqueCoins',{'id':icon.idH}) }}">Update</a></td>
+                                <td><a class="btn btn-danger" href="{{ path('DellhistoriqueCoins',{'id':icon.idH}) }}">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

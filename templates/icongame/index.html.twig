@@ -1,0 +1,43 @@
+{% extends 'baseadmin.html.twig'  %}
+{% block body %}
+<div class="row" style="display:flex;align-items:center;justify-content:center;margin-top:150px">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <a href="{{ path ('addicongame') }}"><i class="ri-arrow-left-circle-fill" style="font-size:30px"></i></a>
+                <h5 class="card-title">Stat Game</h5>
+
+                <!-- Table with stripped rows -->
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>id Game</th>
+                        <th>winn</th>
+                        <th>value Win</th>
+                        <th>moneyWaste</th>
+                        <th>dateRemise</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for icon in b %}
+                        <tr>
+                            <td>{{icon.idgame}}</td>
+                            <td>{{icon.winn}}</td>
+                            <td>{{icon.valueWin}}</td>
+                            <td>{{icon.moneyWaste}}</td>
+                            <td>{{icon.dateRemise|date("d/m/y") }}</td>
+                            <td><a class="btn btn-outline-dark" href="{{ path('updateicongame',{'id':icon.idgame}) }}">Update</a></td>
+                            <td><a class="btn btn-danger" href="{{ path('delicongame',{'id':icon.idgame}) }}">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <!-- End Table with stripped rows -->
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock %}

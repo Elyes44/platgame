@@ -1,0 +1,43 @@
+{% extends 'baseadmin.html.twig'  %}
+{% block body %}
+<div class="row" style="display:flex;align-items:center;justify-content:center;margin-top:150px">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <a href="{{ path ('addreclamation') }}"><i class="ri-arrow-left-circle-fill" style="font-size:30px"></i></a>
+                <h5 class="card-title">Reclamations List</h5>
+
+                <!-- Table with stripped rows -->
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>id Reclamtion</th>
+                        <th>Type</th>
+                        <th>description</th>
+                        <th>Statut</th>
+                        <th>Date</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for rec in b %}
+                        <tr>
+                            <td>{{rec.idRec}}</td>
+                            <td>{{rec.typeRec}}</td>
+                            <td>{{rec.descriptionRec}}</td>
+                            <td>{{rec.statutRec}}</td>
+                            <td>{{rec.dateRec|date("d/m/y")}}</td>
+                            <td><a class="btn btn-outline-dark" href="{{ path('updatereclamation',{'id':rec.idRec}) }}">Update</a></td>
+                            <td><a class="btn btn-danger" href="{{ path('delreclamation',{'id':rec.idRec}) }}">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <!-- End Table with stripped rows -->
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% endblock %}

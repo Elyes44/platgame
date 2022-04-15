@@ -1,0 +1,44 @@
+{% extends 'baseUser.html.twig'  %}
+{% block body %}
+    <div class="row" style="display:flex;align-items:center;justify-content:center;margin-top:150px">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <a href="{{ path ('userwallet') }}"><i class="ri-arrow-left-circle-fill" style="font-size:30px"></i></a>
+                    <h5 class="card-title">Wallet List</h5>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>id_wallet</th>
+                            <th>solde</th>
+                            <th>card_number</th>
+                            <th>csc</th>
+                            <th>expire</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for wal in b %}
+                            <tr>
+                                <td>{{wal.idWallet}}</td>
+                                <td>{{wal.solde}}</td>
+                                <td>{{wal.cardNumber}}</td>
+                                <td>{{wal.csc}}</td>
+                                <td>{{wal.expire}}</td>
+                                <td><a class="btn btn-outline-dark" href="{{ path('userupdatewallet',{'id':wal.idWallet}) }}">Update</a></td>
+                                <td><a class="btn btn-danger" href="{{ path('userdelwallet',{'id':wal.idWallet}) }}">Delete</a></td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
